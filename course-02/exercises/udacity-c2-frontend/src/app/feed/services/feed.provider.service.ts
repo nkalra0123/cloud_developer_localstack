@@ -20,6 +20,7 @@ export class FeedProviderService {
   }
 
   async uploadFeedItem(caption: string, file: File): Promise<any> {
+    console.log('in uploadFeedItem');
     const res = await this.api.upload('/feed', file, {caption: caption, url: file.name});
     const feed = [res, ...this.currentFeed$.value];
     this.currentFeed$.next(feed);
